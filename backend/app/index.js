@@ -2,6 +2,7 @@ import express, { response } from 'express';
 import cors from 'cors';
 import mysql from 'mysql';
 import bodyParser from 'body-parser';
+import 'dotenv/config';
 
 const app = express();
 const PORT = 3000;
@@ -13,10 +14,10 @@ app.use(bodyParser.json());
 
 async function connect(){
   const connection = await mysql.createConnection({
-      host: "localhost",
-      user: 'root',
-      password: 'root',
-      database: "infraestrutura"
+      host: process.env.DATABASE_HOST,
+      user: process.env.DATABASE_USER,
+      password: process.env.DATABASE_PASSWORD,
+      database: process.env.DATABASE_NAME
   });
   
   console.log("Conectou no MySQL!");
