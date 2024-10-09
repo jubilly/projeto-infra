@@ -15,10 +15,10 @@ jobs:
 
       - name: Config BackEnd file
         run: |
-          sed -i 's/_USER_/${{ secrets.DB_USERNAME }}/g' backend/myapi.py
-          sed -i 's/_PASSWORD_/${{ secrets.DB_PASSWORD }}/g' backend/myapi.py
-          sed -i 's/_HOST_/${{ secrets.DB_HOST }}/g' backend/myapi.py
-          sed -i 's/_DBNAME_/${{ secrets.DB_NAME }}/g' backend/myapi.py
+          sed -i 's/DATABASE_USER/${{ secrets.DATABASE_USER }}/g' backend/app/index.js
+          sed -i 's/DATABASE_PASSWORD/${{ secrets.DATABASE_PASSWORD }}/g' backend/app/index.js
+          sed -i 's/DATABASE_HOST/${{ secrets.DATABASE_HOST }}/g' backend/app/index.js
+          sed -i 's/DATABASE_NAME/${{ secrets.DATABASE_NAME }}/g' backend/app/index.js
 
       - name: Deploy BackEnd
         uses: appleboy/scp-action@v0.1.7
@@ -26,7 +26,7 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "backend/myapi.py"
+          source: "backend/app/index.js"
           target: "/home/ubuntu/myapp/"
           strip_components: 1
 
@@ -40,6 +40,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           key: ${{ secrets.KEY }}
-          source: "frontend/index.html"
+          source: "frontend/*"
           target: "/var/www/html/"
           strip_components: 1

@@ -14,10 +14,10 @@ app.use(bodyParser.json());
 
 async function connect(){
   const connection = await mysql.createConnection({
-      host: process.env.DATABASE_HOST,
-      user: process.env.DATABASE_USER,
-      password: process.env.DATABASE_PASSWORD,
-      database: process.env.DATABASE_NAME
+      host: process.env.DATABASE_HOST || 'DATABASE_HOST',
+      user: process.env.DATABASE_USER || 'DATABASE_USER',
+      password: process.env.DATABASE_PASSWORD || 'DATABASE_PASSWORD',
+      database: process.env.DATABASE_NAME || 'DATABASE_NAME'
   });
   
   console.log("Conectou no MySQL!");
