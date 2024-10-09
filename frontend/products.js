@@ -1,11 +1,15 @@
 (function() {
     const getProducts = async () => {
         
-        const url = 'http://localhost:3000/products';
-        const response = await fetch(url);
-        const products = await response.json();
+        try {
+            const url = 'http://localhost:3000/products';
+            const response = await fetch(url);
+            const products = await response.json();
+            return products;
+        } catch {
+            return undefined;
+        }
         
-        return products;
     }
 
     const productImg = () => {
