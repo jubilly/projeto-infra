@@ -29,6 +29,7 @@ jobs:
           source: "backend/app/index.js"
           target: "/home/ubuntu/myapp/"
           strip_components: 1
+          debug: true
 
       - name: Config FrontEnd file
         run: |
@@ -43,3 +44,4 @@ jobs:
           source: "frontend/*"
           target: "/var/www/html/"
           strip_components: 1
+          debug: true
