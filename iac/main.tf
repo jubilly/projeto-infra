@@ -18,7 +18,7 @@ resource "aws_instance" "web" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = "t3.micro"
   key_name = "posweb2024"
-  security_groups = ["posweb_myapp_2024"]
+  security_groups = ["posweb_ecommerce_2024"]
   user_data = base64encode(data.template_file.user_data.rendered)
 
   tags = {

@@ -1,8 +1,9 @@
 (function() {
+    const endpoint = 'http://_API_ADDRESS_:3000';
     const getProducts = async () => {
         
         try {
-            const url = 'http://_API_ADDRESS_:5000/products';
+            const url = `${endpoint}/products`;
             const response = await fetch(url);
             const products = await response.json();
             return products;
@@ -120,7 +121,7 @@
             return;
         }
 
-        const url = 'http://_API_ADDRESS_:5000/addToCart';
+        const url = `${endpoint}/addToCart`;
         const body = {
             method: 'PUT',
             headers: {
