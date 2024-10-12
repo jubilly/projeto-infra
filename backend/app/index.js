@@ -5,7 +5,7 @@ import bodyParser from 'body-parser';
 import 'dotenv/config';
 
 const app = express();
-const PORT = 3000;
+const PORT = 5000;
 
 app.use(cors());
 
@@ -23,14 +23,6 @@ async function connect(){
   console.log("Conectou no MySQL!");
   return connection;
 }
-
-
-app.get('/person', (request, response) => {
-  
-  const insert = "insert into person (id, lastname, firstname) values (2, 'Caetano', 'Thaís');";
-
-  response.json({ status: 'success'});
-});
 
 app.put('/addToCart', async (request, response) => {
   const { id, quantity, stock} = request.body;
@@ -60,6 +52,13 @@ app.get('/products', async (request, response) => {
     response.json(result)
   });
   conn.end();
+});
+
+app.get('/health', async (request, response) => {
+  response.json({
+    success: true,
+    message: 'Servidor saudável'
+  })
 });
 
 // Inicie o servidor

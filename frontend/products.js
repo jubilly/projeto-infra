@@ -1,4 +1,5 @@
 (function() {
+    // const endpoint = 'http://localhost:5000';
     const endpoint = 'http://_API_ADDRESS_:5000';
     const getProducts = async () => {
         
